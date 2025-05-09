@@ -3,13 +3,15 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import StepIndicator from './StepIndicator';
-import RegistrationStep from './steps/RegistrationStep';
-import VerificationStep from './steps/VerificationStep';
-import PaymentStep from './steps/PaymentStep';
-import DocumentUploadStep from './steps/DocumentUploadStep';
-import LinkSharingStep from './steps/LinkSharingStep';
-import CompletionStep from './steps/CompletionStep';
+import CourseCreationStep from './steps/CourseCreationStep';
+import CourseContentStep from './steps/CourseContentStep';
+import CoursePreviewStep from './steps/CoursePreviewStep';
+import CoursePublishStep from './steps/CoursePublishStep';
+import CourseBrowseStep from './steps/CourseBrowseStep';
+import CoursePaymentStep from './steps/CoursePaymentStep';
+import CourseViewingStep from './steps/CourseViewingStep';
 
+// Updated type to represent Teacher and Student
 type UserType = "A" | "B";
 
 interface WorkflowContainerProps {
@@ -19,14 +21,21 @@ interface WorkflowContainerProps {
 const WorkflowContainer: React.FC<WorkflowContainerProps> = ({ userType }) => {
   const [currentStep, setCurrentStep] = useState(1);
   
-  const steps = [
-    "ثبت اطلاعات",
-    "احراز هویت",
-    "پرداخت",
-    "بارگذاری اسناد",
-    "ارسال لینک",
-    "تکمیل",
+  // Different steps for teachers and students
+  const teacherSteps = [
+    "ایجاد دوره",
+    "آپلود محتوا",
+    "پیش‌نمایش",
+    "انتشار دوره"
   ];
+  
+  const studentSteps = [
+    "مرور دوره‌ها",
+    "پرداخت",
+    "دسترسی به محتوا"
+  ];
+  
+  const steps = userType === "A" ? teacherSteps : studentSteps;
 
   const handleNext = () => {
     setCurrentStep((prev) => Math.min(prev + 1, steps.length));
@@ -37,33 +46,48 @@ const WorkflowContainer: React.FC<WorkflowContainerProps> = ({ userType }) => {
   };
 
   const renderStep = () => {
-    switch (currentStep) {
-      case 1:
-        return <RegistrationStep userType={userType} />;
-      case 2:
-        return <VerificationStep userType={userType} />;
-      case 3:
-        return <PaymentStep userType={userType} />;
-      case 4:
-        return <DocumentUploadStep userType={userType} />;
-      case 5:
-        return <LinkSharingStep userType={userType} />;
-      case 6:
-        return <CompletionStep userType={userType} />;
-      default:
-        return <RegistrationStep userType={userType} />;
+    if (userType === "A") { // Teacher workflow
+      switch (currentStep) {
+        case 1:
+          return <CourseCreationStep />;
+        case 2:
+          return <CourseContentStep />;
+        case 3:
+          return <CoursePreviewStep />;
+        case 4:
+          return <CoursePublishStep />;
+        default:
+          return <CourseCreationStep />;
+      }
+    } else { // Student workflow
+      switch (currentStep) {
+        case 1:
+          return <CourseBrowseStep />;
+        case 2:
+          return <CoursePaymentStep />;
+        case 3:
+          return <CourseViewingStep />;
+        default:
+          return <CourseBrowseStep />;
+      }
     }
   };
 
   const borderColor = userType === "A" ? "border-userA" : "border-userB";
+  
+  // Updated labels for teachers and students
+  const userTypeLabel = userType === "A" ? "مدرس" : "شاگرد";
 
   return (
     <div className="w-full max-w-4xl mx-auto">
       <Card className={`border-t-4 ${borderColor}`}>
         <CardHeader>
           <CardTitle className="text-center">
-            {userType === "A" ? "فرآیند کاربر نوع A" : "فرآیند کاربر نوع B"}
+            {userType === "A" ? "پنل مدیریت دوره‌های آموزشی" : "دوره‌های آموزشی"}
           </CardTitle>
+          <div className="text-center text-sm text-muted-foreground mb-4">
+            شما به عنوان {userTypeLabel} وارد شده‌اید
+          </div>
           <StepIndicator steps={steps} currentStep={currentStep} />
         </CardHeader>
         <CardContent className="pb-8">
@@ -82,7 +106,7 @@ const WorkflowContainer: React.FC<WorkflowContainerProps> = ({ userType }) => {
             disabled={currentStep === steps.length}
             className={userType === "A" ? "bg-userA hover:bg-userA-dark" : "bg-userB hover:bg-userB-dark"}
           >
-            {currentStep === steps.length - 1 ? "پایان فرآیند" : "مرحله بعد"}
+            {currentStep === steps.length ? "پایان فرآیند" : "مرحله بعد"}
           </Button>
         </CardFooter>
       </Card>

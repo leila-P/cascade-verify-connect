@@ -18,19 +18,19 @@ const UserTypeSelection: React.FC<UserTypeSelectionProps> = ({
         type="button"
         onClick={() => onSelectType("A")}
         className={`user-type-a flex-1 py-2 px-4 rounded-md transition-colors ${
-          selectedType === "A" ? "selected" : ""
+          selectedType === "A" ? "bg-userA text-white" : "border hover:bg-userA/10"
         }`}
       >
-        کاربر نوع A
+        مدرس
       </button>
       <button
         type="button"
         onClick={() => onSelectType("B")}
         className={`user-type-b flex-1 py-2 px-4 rounded-md transition-colors ${
-          selectedType === "B" ? "selected" : ""
+          selectedType === "B" ? "bg-userB text-white" : "border hover:bg-userB/10"
         }`}
       >
-        کاربر نوع B
+        شاگرد
       </button>
     </div>
   );

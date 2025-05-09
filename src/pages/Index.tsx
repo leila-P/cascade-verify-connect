@@ -4,7 +4,6 @@ import AppLayout from "@/components/layout/AppLayout";
 import AuthForm from "@/components/auth/AuthForm";
 import WorkflowContainer from "@/components/workflow/WorkflowContainer";
 import AdminPanel from "@/components/admin/AdminPanel";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 
 const Index = () => {
@@ -41,29 +40,29 @@ const Index = () => {
       <div className="max-w-4xl mx-auto">
         <Card className="mb-8">
           <CardContent className="pt-6">
-            <h2 className="text-2xl font-bold text-center mb-6">سامانه چند مرحله‌ای</h2>
+            <h2 className="text-2xl font-bold text-center mb-6">سامانه آموزش آنلاین</h2>
             <p className="text-center mb-4">
-              به سامانه چند مرحله‌ای خوش آمدید. در این سامانه شما می‌توانید فرآیندهای مختلف را با نقش کاربر نوع A یا B انجام دهید.
+              به سامانه آموزش آنلاین خوش آمدید. در این سامانه شما می‌توانید به عنوان مدرس دوره‌های آموزشی ایجاد کنید یا به عنوان شاگرد دوره‌ها را مشاهده و خریداری نمایید.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
               <div className="p-4 border rounded-md text-center">
-                <h3 className="font-semibold text-lg text-userA mb-2">کاربر نوع A</h3>
-                <p className="text-sm mb-4">ویژه سازمان‌ها و شرکت‌ها</p>
+                <h3 className="font-semibold text-lg text-userA mb-2">ورود به عنوان مدرس</h3>
+                <p className="text-sm mb-4">ثبت دوره‌های آموزشی و مدیریت محتوا</p>
                 <button 
                   onClick={() => setDemoUserType("A")} 
                   className="bg-userA text-white px-4 py-2 rounded-md hover:bg-userA-dark"
                 >
-                  ورود به عنوان نوع A
+                  ورود به پنل مدرس
                 </button>
               </div>
               <div className="p-4 border rounded-md text-center">
-                <h3 className="font-semibold text-lg text-userB mb-2">کاربر نوع B</h3>
-                <p className="text-sm mb-4">ویژه افراد حقیقی</p>
+                <h3 className="font-semibold text-lg text-userB mb-2">ورود به عنوان شاگرد</h3>
+                <p className="text-sm mb-4">مشاهده و خرید دوره‌های آموزشی</p>
                 <button 
                   onClick={() => setDemoUserType("B")} 
                   className="bg-userB text-white px-4 py-2 rounded-md hover:bg-userB-dark"
                 >
-                  ورود به عنوان نوع B
+                  ورود به پنل شاگرد
                 </button>
               </div>
             </div>
