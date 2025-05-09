@@ -19,6 +19,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ["var(--font-sans)"],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -73,6 +76,23 @@ export default {
 					light: '#6ee7b7', // emerald-300
 					dark: '#047857', // emerald-700
 				},
+				classbon: {
+					primary: '#4361ee',
+					secondary: '#3f37c9',
+					accent: '#4895ef',
+					neutral: '#f8f9fa',
+					'base-100': '#ffffff',
+					info: '#4cc9f0',
+					success: '#06d6a0',
+					warning: '#ffd166',
+					error: '#ef476f',
+					dark: '#212529',
+					light: '#f8f9fa',
+				},
+			},
+			backgroundImage: {
+				'hero-pattern': "url('/hero-pattern.png')",
+				'gradient-classbon': 'linear-gradient(90deg, #4361ee 0%, #3f37c9 100%)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -105,6 +125,10 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'progress': 'progress 1s ease-in-out'
+			},
+			boxShadow: {
+				'classbon': '0 4px 20px rgba(0, 0, 0, 0.08)',
+				'classbon-hover': '0 10px 30px rgba(0, 0, 0, 0.12)',
 			}
 		}
 	},

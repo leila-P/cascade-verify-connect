@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 210 20% 98%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -14,26 +14,26 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 221 83% 53%;
+    --primary: 224 71% 60%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 243 57% 50%;
+    --secondary-foreground: 210 40% 98%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
+    --accent: 217 95% 62%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 347 77% 61%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 221 83% 53%;
+    --ring: 224 71% 60%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -193,6 +193,31 @@
   
   /* Card hover effect */
   .card-hover {
-    @apply transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg;
+    @apply transition-all duration-300 transform hover:-translate-y-1 hover:shadow-classbon-hover;
+  }
+  
+  /* Classbon-specific styles */
+  .btn-classbon-primary {
+    @apply bg-classbon-primary text-white px-6 py-3 rounded-md font-medium transition-all hover:bg-classbon-secondary;
+  }
+
+  .btn-classbon-outline {
+    @apply border border-classbon-primary text-classbon-primary px-6 py-3 rounded-md font-medium transition-all hover:bg-classbon-primary hover:text-white;
+  }
+  
+  .card-classbon {
+    @apply bg-white rounded-lg shadow-classbon overflow-hidden transition-all duration-300 hover:shadow-classbon-hover;
+  }
+  
+  .heading-classbon {
+    @apply text-classbon-dark font-bold relative;
+  }
+  
+  .heading-classbon::after {
+    @apply content-[''] absolute bg-classbon-primary h-1 w-12 bottom-0 right-0 rounded;
+  }
+  
+  .input-classbon {
+    @apply border border-gray-300 rounded-md px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-classbon-primary focus:border-transparent;
   }
 }
